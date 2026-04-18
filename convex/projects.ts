@@ -80,14 +80,17 @@ export const create = mutation({
     return projectId;
   },
 });
+
 export const remove = mutation({
   args: {
     id: v.id("projects"),
   },
   handler: async (ctx, args) => {
+    await assertProjectOwner(ctx, args.id); // 👀
     await ctx.db.patch(args.id, { deletedAt: Date.now() });
   },
 });
+
 
 export const deleteProjectCascade = internalMutation({
   args: {
