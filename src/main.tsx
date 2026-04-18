@@ -8,7 +8,7 @@ import "./index.css";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
-const router = createRouter({ routeTree, basepath: "/issue-tracker" });
+const router = createRouter({ routeTree, basepath: "/IssueTracker" });
 
 declare module "@tanstack/react-router" {
   interface Register {
@@ -23,4 +23,3 @@ declare module "@tanstack/react-router" {
       </ConvexAuthProvider>
     </StrictMode>,
   );
-
