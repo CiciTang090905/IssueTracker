@@ -6,7 +6,8 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/issue-tracker/",
+  // GitHub Pages serves this repo under /IssueTracker/
+  base: "/IssueTracker/",
   plugins: [tanstackRouter(), react(), tailwindcss()],
   resolve: {
     alias: {
