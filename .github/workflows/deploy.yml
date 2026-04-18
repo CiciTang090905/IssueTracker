@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,10 +42,8 @@ jobs:
         run: pnpm run build
 
       - name: Deploy Convex (optional)
-        if: ${{ secrets.CONVEX_DEPLOY_KEY != '' }}
+        if: ${{ env.CONVEX_DEPLOY_KEY != '' }}
         run: npx convex deploy
-        env:
-          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
