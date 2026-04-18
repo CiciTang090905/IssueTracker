@@ -37,7 +37,11 @@ jobs:
         run: pnpm install
 
       - name: Build with Vite
-        run: npx convex deploy --cmd 'pnpm run build'
+        run: pnpm run build
+
+      - name: Deploy Convex (optional)
+        if: ${{ secrets.CONVEX_DEPLOY_KEY != '' }}
+        run: npx convex deploy
         env:
           CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
 
